@@ -52,7 +52,7 @@ header{
 
 main {
     width: 45%;
-    background-color: #9c3535;
+    background-color: #ff5b92;
     padding: 1%;
     border-radius: 20px;
     float: right; 
@@ -64,7 +64,7 @@ main {
 
 
  main {
-    background-color: #861515;
+    background-color: #c0ff96;
     padding: 1%;
     margin-top: 10px;
     float: left;
@@ -226,3 +226,47 @@ color: white;
     color: rgb(255, 255, 255);
  }
 
+
+
+
+
+
+/*footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px; /* Adiciona um espaço acima do rodapé 
+}*/
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #fff; /* Cor do texto do link */
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+#container-loc{
+    text-align: center;
+   margin: 0 auto;
+   width: 100%;
+}
+
+
+/* Transição suave */
+.card-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adicionei a transição para box-shadow também */
+}
+
+/* Efeito de hover */
+.card-hover-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra um pouco mais forte para destaque */
+}
