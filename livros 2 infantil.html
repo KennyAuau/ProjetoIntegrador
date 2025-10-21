@@ -1,284 +1,336 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilonavbar2.css">
+  <head>
+    <link rel="icon" type="image/x-icon" href="Imagens/icon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/estilonavbar2.css" />
     <title>Conto de Fadas dos Irmãos grimm</title>
     <style>
-        /* Estilos Globais e Reset Básico */
-        body {
-            font-family: Arial, sans-serif;
-            background-color:  rgb(64, 64, 64);
-            margin: 0;
-            padding: 0;
-        }
-        * {
-            box-sizing: border-box;
-        }
-        a {
-            color: #007185;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+      /* Estilos Globais e Reset Básico */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: rgb(64, 64, 64);
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      a {
+        color: #007185;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
 
-        /* --- Estilo da Seção Principal do Produto --- */
+      /* --- Estilo da Seção Principal do Produto --- */
+      .product-page {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* --- Estilo da Coluna Esquerda (Imagens) --- */
+      .left-column {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .main-image img {
+        width: 100%;
+        max-width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .thumbnails {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .thumbnails img {
+        width: 50px;
+        height: auto;
+        margin: 5px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+      }
+
+      /* --- Estilo da Coluna Central (Descrição) --- */
+      .center-column {
+        width: 50%;
+        background-color: rgb(153, 153, 153);
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+      .center-column h1 {
+        font-size: 28px;
+        font-weight: 500;
+        color: #0f1111;
+        margin: 0 0 10px 0;
+      }
+      .author-info {
+        font-size: 14px;
+        color: #007185;
+        margin-bottom: 10px;
+      }
+      .rating {
+        font-size: 14px;
+        color: #ff9900;
+      }
+      .details-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        font-size: 14px;
+      }
+      .details-list li {
+        margin-bottom: 5px;
+      }
+      .details-list span {
+        font-weight: bold;
+      }
+      .sinopse {
+        font-size: 14px;
+        color: #333;
+        line-height: 1.5;
+      }
+
+      /* --- Estilo da Coluna Direita (Compra) --- */
+      .right-column {
+        width: 30%;
+        background-color: rgb(153, 153, 153);
+        padding: 20px;
+        border: 1px solid #747474;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+      }
+      .price-info {
+        font-size: 28px;
+        font-weight: bold;
+        color: #b12704;
+        margin-bottom: 10px;
+      }
+      .buy-options {
+        border: 1px solid #747474;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 15px;
+      }
+      .buy-option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+      .buy-option:hover {
+        background-color: rgb(153, 153, 153);
+      }
+      .buy-option.selected {
+        border: 2px solid #007185;
+        background-color: rgb(153, 153, 153);
+      }
+      .buy-option .type {
+        font-weight: bold;
+        font-size: 14px;
+      }
+      .buy-option .price {
+        font-size: 16px;
+      }
+
+      .prime-delivery {
+        font-size: 13px;
+        color: #565959;
+        margin-bottom: 15px;
+      }
+      .prime-delivery img {
+        height: 18px;
+        vertical-align: middle;
+      }
+
+      .btn-add-to-cart {
+        background-color: rgb(153, 153, 153);
+        border: 1px solid rgb(64, 64, 64) a;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 20px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.2s ease;
+      }
+      .btn-add-to-cart:hover {
+        background-color: #c6c6c6;
+      }
+      .in-stock {
+        color: #008000;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* --- Responsividade Básica --- */
+      @media (max-width: 768px) {
         .product-page {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+          flex-direction: column;
         }
-
-        /* --- Estilo da Coluna Esquerda (Imagens) --- */
-        .left-column {
-            width: 20%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .main-image img {
-            width: 100%;
-            max-width: 300px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .thumbnails {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .thumbnails img {
-            width: 50px;
-            height: auto;
-            margin: 5px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
-
-        /* --- Estilo da Coluna Central (Descrição) --- */
-        .center-column {
-            width: 50%;
-            background-color:  rgb(153, 153, 153);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        }
-        .center-column h1 {
-            font-size: 28px;
-            font-weight: 500;
-            color: #0f1111;
-            margin: 0 0 10px 0;
-        }
-        .author-info {
-            font-size: 14px;
-            color: #007185;
-            margin-bottom: 10px;
-        }
-        .rating {
-            font-size: 14px;
-            color: #ff9900;
-        }
-        .details-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-        .details-list li {
-            margin-bottom: 5px;
-        }
-        .details-list span {
-            font-weight: bold;
-        }
-        .sinopse {
-            font-size: 14px;
-            color: #333;
-            line-height: 1.5;
-        }
-        
-        /* --- Estilo da Coluna Direita (Compra) --- */
+        .left-column,
+        .center-column,
         .right-column {
-            width: 30%;
-            background-color:  rgb(153, 153, 153);
-            padding: 20px;
-            border: 1px solid #747474;
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
+          width: 100%;
         }
-        .price-info {
-            font-size: 28px;
-            font-weight: bold;
-            color: #b12704;
-            margin-bottom: 10px;
-        }
-        .buy-options {
-            border: 1px solid #747474;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-        .buy-option {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            cursor: pointer;
-        }
-        .buy-option:hover {
-            background-color:  rgb(153, 153, 153);
-        }
-        .buy-option.selected {
-            border: 2px solid #007185;
-            background-color: rgb(153, 153, 153);
-        }
-        .buy-option .type {
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .buy-option .price {
-            font-size: 16px;
-        }
-
-        .prime-delivery {
-            font-size: 13px;
-            color: #565959;
-            margin-bottom: 15px;
-        }
-        .prime-delivery img {
-            height: 18px;
-            vertical-align: middle;
-        }
-
-        .btn-add-to-cart {
-            background-color: rgb(153, 153, 153);
-            border: 1px solid  rgb(64, 64, 64)a;
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 20px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.2s ease;
-        }
-        .btn-add-to-cart:hover {
-            background-color: #c6c6c6;
-        }
-        .in-stock {
-            color: #008000;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        /* --- Responsividade Básica --- */
-        @media (max-width: 768px) {
-            .product-page {
-                flex-direction: column;
-            }
-            .left-column, .center-column, .right-column {
-                width: 100%;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-
-     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-     <a class="navbar-brand" href="index.html">
-    <img src="imagens/match vetorizado 4.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    Match Literario
-    </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home <span class="sr-only">(Página atual)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="sobre.html">Sobre</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="loc.html">Venha nos visitar!</a>
-      </li>
-    </ul>
-  </div>
-  <nav class="navbar-right"> 
-      <ul class="navbar-right">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">
+        <img
+          src="imagens/match vetorizado 4.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
+        Match Literario
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Alterna navegação"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"
+              >Home <span class="sr-only">(Página atual)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sobre.html">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="loc.html">Venha nos visitar!</a>
+          </li>
+        </ul>
+      </div>
+      <nav class="navbar-right">
+        <ul class="navbar-right">
           <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-gear"></i></a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="perfi.html"><i class="bi bi-person-circle"></i></a>
-           <a class="nav-link" href="index.html"><i class="bi bi-brightness-high"></i></a>
-           <a class="nav-link" href="video.html"><i class="bi bi-person-video"></i></a>
-        </div>
-      </li>
-  </ul>
-  </nav>
-</nav>
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ><i class="bi bi-gear"></i
+            ></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="perfi.html"
+                ><i class="bi bi-person-circle"></i
+              ></a>
+              <a class="nav-link" href="index.html"
+                ><i class="bi bi-brightness-high"></i
+              ></a>
+              <a class="nav-link" href="video.html"
+                ><i class="bi bi-person-video"></i
+              ></a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </nav>
 
     <main class="product-page">
+      <div class="left-column">
+        <div class="main-image">
+          <img
+            src="Infantil/Agora entendo a série Grimm_ 😂_Esses contos não são nada infantis_.jpeg"
+            alt="Capa A Metamorfose"
+          />
+        </div>
+        <div class="thumbnails">
+          <img
+            src="Infantil/Captura de tela 2025-08-30 193919.png"
+            alt="Miniatura 1"
+          />
+          <img
+            src="Infantil/Agora entendo a série Grimm_ 😂_Esses contos não são nada infantis_.jpeg"
+            alt="Miniatura 2"
+          />
+          <img
+            src="Infantil/Captura de tela 2025-08-30 194013.png"
+            alt="Miniatura 3"
+          />
+        </div>
+      </div>
 
-        <div class="left-column">
-            <div class="main-image">
-                <img src="Infantil/Agora entendo a série Grimm_ 😂_Esses contos não são nada infantis_.jpeg" alt="Capa A Metamorfose">
-            </div>
-            <div class="thumbnails">
-                <img src="Infantil/Captura de tela 2025-08-30 193919.png" alt="Miniatura 1">
-                <img src="Infantil/Agora entendo a série Grimm_ 😂_Esses contos não são nada infantis_.jpeg" alt="Miniatura 2">
-                <img src="Infantil/Captura de tela 2025-08-30 194013.png" alt="Miniatura 3">
-            </div>
+      <div class="center-column">
+        <h1>Conto de Fadas dos Irmãos grimm</h1>
+
+        <p class="sinopse">
+          Reconhecidos mundialmente pela qualidade dos contos que produziram
+          desde o começo do século XIX, os irmãos Grimm diziam estar só
+          escrevendo as histórias que escutavam de camponeses e amigos.
+          Concomitantemente aos registros do cotidiano, começaram a pesquisar
+          documentos e recolher histórias da Alemanha para a preservação da
+          memória e das tradições populares. Neste livro encontram-se contos
+          fantásticos que mantêm viva a memória da criação folclórica da
+          população alemã.
+        </p>
+
+        <ul class="details-list">
+          <li><span>Idioma:</span> Português</li>
+          <li><span>Capa:</span> Comum</li>
+          <li><span>Número de páginas:</span> 376 páginas</li>
+        </ul>
+      </div>
+
+      <div class="right-column">
+        <div class="price-info">R$ 20,89</div>
+
+        <div class="buy-options">
+          <div class="buy-option">
+            <span class="type">Capa comum</span>
+            <span class="price">R$ 20,89</span>
+          </div>
+          <div class="buy-option">
+            <span class="type">Entrega Padrão</span>
+            <span class="price">R$ 20,00</span>
+          </div>
+          <div class="buy-option selected">
+            <span class="type">Total</span>
+            <span class="price">R$ 40,89</span>
+          </div>
         </div>
 
-        <div class="center-column">
-            <h1>Conto de Fadas dos Irmãos grimm</h1>
-            
-            <p class="sinopse">
-             Reconhecidos mundialmente pela qualidade dos contos que produziram desde o começo do século XIX, os irmãos Grimm diziam estar só escrevendo as histórias que escutavam de camponeses e amigos. Concomitantemente aos registros do cotidiano, começaram a pesquisar documentos e recolher histórias da Alemanha para a preservação da memória e das tradições populares. Neste livro encontram-se contos fantásticos que mantêm viva a memória da criação folclórica da população alemã.
-            </p>
-
-            <ul class="details-list"> 
-                <li><span>Idioma:</span> Português</li>
-                <li><span>Capa:</span> Comum</li>
-                <li><span>Número de páginas:</span> 376 páginas</li>
-            </ul>
-
-        </div>
-
-        <div class="right-column">
-            <div class="price-info">R$ 20,89</div>
-            
-            <div class="buy-options">
-                <div class="buy-option">
-                    <span class="type">Capa comum</span>
-                    <span class="price">R$ 20,89</span>
-                </div>
-                <div class="buy-option">
-                    <span class="type">Entrega Padrão</span>
-                    <span class="price">R$ 20,00</span>
-                </div>
-                <div class="buy-option selected">
-                    <span class="type">Total</span>
-                    <span class="price">R$ 40,89</span>
-                </div>
-            </div>
-
-            <button class="btn-add-to-cart">Adicionar ao carrinho><a href="index.html"></a></button>
-
-        </div>
-
+        <button class="btn-add-to-cart">
+          Adicionar ao carrinho><a href="index.html"></a>
+        </button>
+      </div>
     </main>
-
-</body>
+  </body>
 </html>
